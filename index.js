@@ -6,10 +6,10 @@ const { Server } = require("socket.io");
 app.use(cors());
 
 const server = http.createServer(app);
-
+const PORT = process.env.PORT || 3001;
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173","https://splendorous-parfait-8e5acc.netlify.app"],
+    origin: "https://splendorous-parfait-8e5acc.netlify.app",
     methods: ["GET", "POST"],
   },
 });
@@ -31,6 +31,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(3001, () => {
+server.listen(PORT, () => {
   console.log("SERVER RUNNING");
 });
